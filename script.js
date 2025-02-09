@@ -47,9 +47,9 @@ function locateMainframe() {
         message.innerText = "Mainframe Located"; // Display message
         message.style.display = "block";
     } else {
+        imageDiv.style.display = "none";
         message.innerText = "ERROR : Unable to locate"; // Display message
         message.style.display = "block";
-        alert("Error: Unable to locate "); // Show an error message
         inputField.value = ""; // Clear the field
     }
 }
