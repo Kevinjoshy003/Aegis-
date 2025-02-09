@@ -35,21 +35,22 @@ function launchMission() {
 
 // Locate Mainframe
 function locateMainframe() {
+    let inputField = document.getElementById("mainframe-input");
+    let inputValue = inputField.value.trim(); // Remove spaces
     let imageDiv = document.getElementById("mainframe-image");
     let image = document.getElementById("mainframe-img");
-    image.src = "your-mainframe-image.jpg"; // Replace with actual image path
     let message = document.getElementById("mainframe-message");
-    let inputField = document.getElementById("mainframe-input");
-    let inputValue = inputField.value.trim();
+
     if (inputValue === "B112") {
         image.src = "your-mainframe-image.jpg"; // Replace with actual image path
         imageDiv.style.display = "block";
-        message.innerText = "Mainframe Located"; // Display message
+        message.innerText = "Mainframe Located";
         message.style.display = "block";
     } else {
-        imageDiv.style.display = "none";
-        message.innerText = "ERROR : Unable to locate"; // Display message
+        imageDiv.style.display = "none"; // Ensure image is hidden on incorrect input
+        message.innerText = "ERROR: Unable to locate";
         message.style.display = "block";
+        alert("Access Denied: Incorrect Code"); // Show an error message
         inputField.value = ""; // Clear the field
     }
 }
