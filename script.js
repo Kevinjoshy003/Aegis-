@@ -13,7 +13,7 @@ function login() {
     let errorMessage = document.getElementById("error-message");
 
     if (agents[username] && agents[username] === password) {
-        window.location.href = "index.html";
+        window.location.href = "home.html";
     } else {
         errorMessage.innerText = "Access Denied. Incorrect credentials.";
     }
