@@ -39,4 +39,13 @@ function locateMainframe() {
     let image = document.getElementById("mainframe-img");
     image.src = "your-mainframe-image.jpg"; // Replace with actual image path
     imageDiv.style.display = "block";
+    let inputField = document.getElementById("mainframe-input");
+    let inputValue = inputField.value.trim();
+    if (inputValue === "B112") {
+        image.src = "your-mainframe-image.jpg"; // Replace with actual image path
+        imageDiv.style.display = "block";
+    } else {
+        alert("Error: Unable to locate "); // Show an error message
+        inputField.value = ""; // Clear the field
+    }
 }
