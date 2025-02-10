@@ -54,3 +54,26 @@ function locateMainframe() {
         inputField.value = ""; // Clear the field
     }
 }
+document.addEventListener("contextmenu", (event) => event.preventDefault()); // Disable right-click
+
+document.addEventListener("keydown", (event) => {
+    if (event.ctrlKey && (event.key === "u" || event.key === "U")) { // Disable Ctrl+U (View Source)
+        event.preventDefault();
+    }
+    if (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "i")) { // Disable Ctrl+Shift+I (DevTools)
+        event.preventDefault();
+    }
+    if (event.ctrlKey && event.shiftKey && (event.key === "J" || event.key === "j")) { // Disable Ctrl+Shift+J (Console)
+        event.preventDefault();
+    }
+    if (event.key === "F12") { // Disable F12
+        event.preventDefault();
+    }
+});
+setInterval(function () {
+    let devtools = /./;
+    devtools.toString = function () {
+        window.location.replace("about:blank"); // Redirect if DevTools is detected
+    };
+    console.log("%c", devtools);
+}, 1000);
