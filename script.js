@@ -77,3 +77,19 @@ setInterval(function () {
     };
     console.log("%c", devtools);
 }, 1000);
+
+(function() {
+    let element = new Image();
+    Object.defineProperty(element, 'id', { 
+        get: function() { 
+            window.location.replace("about:blank"); // Redirects if DevTools is opened
+        } 
+    });
+    console.log(element);
+})();
+document.onkeydown = function(e) {
+    if (e.ctrlKey && e.key === "u") {
+        return false;  // Blocks "View Source"
+    }
+};
+
