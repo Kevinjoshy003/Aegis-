@@ -54,8 +54,11 @@ function locateMainframe() {
         inputField.value = ""; // Clear the field
     }
 }
-document.addEventListener("contextmenu", (event) => event.preventDefault()); // Disable right-click
 
+// Disable right-click
+document.addEventListener("contextmenu", (event) => event.preventDefault());
+
+// Disable common DevTools shortcuts
 document.addEventListener("keydown", (event) => {
     if (event.ctrlKey && (event.key === "u" || event.key === "U")) { // Disable Ctrl+U (View Source)
         event.preventDefault();
@@ -70,6 +73,18 @@ document.addEventListener("keydown", (event) => {
         event.preventDefault();
     }
 });
+
+// Stronger DevTools detection
+(function() {
+    let startTime = new Date().getTime();
+    debugger;
+    let endTime = new Date().getTime();
+    if (endTime - startTime > 100) {
+        window.location.replace("about:blank"); // Redirect if DevTools is detected
+    }
+})();
+
+// Additional DevTools detection and redirection
 setInterval(function () {
     let devtools = /./;
     devtools.toString = function () {
@@ -78,15 +93,7 @@ setInterval(function () {
     console.log("%c", devtools);
 }, 1000);
 
-(function() {
-    let element = new Image();
-    Object.defineProperty(element, 'id', { 
-        get: function() { 
-            window.location.replace("about:blank"); // Redirects if DevTools is opened
-        } 
-    });
-    console.log(element);
-})();
+// Prevent View Source shortcut
 document.onkeydown = function(e) {
     if (e.ctrlKey && e.key === "u") {
         return false;  // Blocks "View Source"
