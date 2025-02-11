@@ -1,10 +1,10 @@
 // Login System
 const agents = {
-    "Zero": "ONY",
-    "Cipher": "GXR",
-    "Nyx": "LYF",
-    "Sentinel": "TNQ",
-    "Hex": "HWS"
+    "Zero": "HFK",
+    "Cipher": "EBL",
+    "Nyx": "CFD",
+    "Sentinel": "HKH",
+    "Hex": "FDE"
 };
 
 function login() {
